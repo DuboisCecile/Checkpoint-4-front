@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.2.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
@@ -18,9 +19,13 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.4",
+    "typescript": "^4.1.2",
+    "autoprefixer": "^9.8.6"
   },
   "devDependencies": {
+    "@tailwindcss/postcss7-compat": "^2.2.4",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.12.0",
     "eslint-config-airbnb": "^18.2.0",
@@ -31,13 +36,13 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^4.3.0",
-    "prettier": "^2.1.2",
-    "typescript": "^4.1.2"
+    "postcss": "^7.0.36",
+    "prettier": "^2.1.2"    
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
