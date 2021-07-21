@@ -4,12 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTimes,
   faBars,
-  faUserCircle,
-  faSearch,
-  faHistory,
-  faHeart,
-  // faChartLine,
-  // faUsers,
+  // faUserCircle,
+  faChessRook,
+  faSmile,
+  faGem,
+  faShoppingBasket,
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header() {
@@ -44,21 +43,29 @@ export default function Header() {
           <ul className="w-full flex flex-col lg:flex-row list-none lg:ml-auto lg:justify-end mt-7">
             <li className="nav-item">
               <NavLink
-                className="px-3 py-2 flex items-center text-sm lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
+                className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
                 exact
-                to="/"
+                to="/sites"
               >
-                {burger ? 'Rechercher' : <FontAwesomeIcon icon={faSearch} />}
+                {burger ? (
+                  'Rechercher un site'
+                ) : (
+                  <FontAwesomeIcon icon={faChessRook} />
+                )}
               </NavLink>
             </li>
 
             {isLoggedIn && (
               <li className="nav-item">
                 <NavLink
-                  to="/history"
-                  className="px-3 py-2 flex items-center text-sm lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
+                  to="/guides"
+                  className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
                 >
-                  {burger ? 'Historique' : <FontAwesomeIcon icon={faHistory} />}
+                  {burger ? (
+                    'Rechercher un animateur'
+                  ) : (
+                    <FontAwesomeIcon icon={faSmile} />
+                  )}
                 </NavLink>
               </li>
             )}
@@ -66,20 +73,36 @@ export default function Header() {
             {isLoggedIn && (
               <li className="nav-item">
                 <NavLink
-                  className="px-3 py-2 flex items-center text-sm lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
+                  className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
                   exact
-                  to="/favoris"
+                  to="/gems"
                 >
-                  {burger ? 'Favoris' : <FontAwesomeIcon icon={faHeart} />}
+                  {burger ? 'Mes gemmes' : <FontAwesomeIcon icon={faGem} />}
                 </NavLink>
               </li>
             )}
 
             {isLoggedIn && (
+              <li className="nav-item">
+                <NavLink
+                  className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
+                  exact
+                  to="/basket"
+                >
+                  {burger ? (
+                    'Mon panier'
+                  ) : (
+                    <FontAwesomeIcon icon={faShoppingBasket} />
+                  )}
+                </NavLink>
+              </li>
+            )}
+
+            {/* {isLoggedIn && (
               <>
                 <li>
                   <NavLink
-                    className="px-3 py-2 flex items-center text-sm lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
+                    className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
                     exact
                     to="/profile"
                   >
@@ -91,14 +114,14 @@ export default function Header() {
                   </NavLink>
                 </li>
               </>
-            )}
+            )} */}
             {/* {!isLoggedIn && (
               <>
                 <li>
                   <NavLink
                     exact
                     to="/sign-up"
-                    className="px-3 py-2 flex items-center text-sm lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
+                    className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
                   >
                     S'inscrire
                   </NavLink>
