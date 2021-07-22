@@ -22,7 +22,7 @@ export default function SearchBar() {
   };
 
   useEffect(() => {
-    API.post('events/search/', { searchValue })
+    API.post('sites/search', { searchValue })
       .then((res) => setResultList(res.data))
       .catch(console.error);
   }, [searchValue]);

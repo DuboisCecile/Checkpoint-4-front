@@ -10,6 +10,7 @@ import {
   faGem,
   faShoppingBasket,
   faPlusCircle,
+  faEye,
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header() {
@@ -21,7 +22,7 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full h-auto flex bg-primary">
+    <header className="w-full h-auto flex bg-blue-400">
       <div className="container px-4 justify-between items-start align-center flex flex-wrap">
         <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start ">
           <div className="flex items-center h-full">
@@ -53,6 +54,21 @@ export default function Header() {
                   'Rechercher un site'
                 ) : (
                   <FontAwesomeIcon icon={faChessRook} />
+                )}
+              </NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink
+                className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
+                exact
+                to="/events"
+                path="/events"
+              >
+                {burger ? (
+                  'Rechercher un évènement'
+                ) : (
+                  <FontAwesomeIcon icon={faEye} />
                 )}
               </NavLink>
             </li>

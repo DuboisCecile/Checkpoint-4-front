@@ -19,13 +19,10 @@ export default function EventForm() {
   useEffect(() => {
     API.get('sites/categories')
       .then(async (res) => {
-        console.log(res.data);
         setSiteCategoryList(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
-
-  console.log(siteCategoryList);
 
   const onSubmitSite = async (form) => {
     console.log(form);
@@ -158,6 +155,19 @@ export default function EventForm() {
             </label>
           </div>
 
+          <div className="mt-5">
+            <label htmlFor="image" className="subtitles">
+              Image d'illustration
+              <input
+                type="text"
+                required
+                className="relative block w-full px-3 py-2 border focus:outline-none focus:z-10 sm:text-sm"
+                placeholder="image"
+                {...register('image')}
+              />
+            </label>
+          </div>
+
           <div>
             <button
               // onClick={() => {
@@ -167,7 +177,7 @@ export default function EventForm() {
               disabled={categoryId === ''}
               className="mt-5 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-400"
             >
-              Create
+              Valider
             </button>
           </div>
         </form>

@@ -18,20 +18,21 @@ export default function EventForm() {
   useEffect(() => {
     API.get('sites')
       .then(async (res) => {
-        console.log(res.data);
         setSitesList(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
 
   const onSubmit = async (form) => {
-    console.log(form);
-    console.log(form.time);
-    if (form && form.site === '0') {
-      console.log(form.site);
+    if (form && form.siteId === '') {
       history.push('/add-site');
     }
-    const updatedForm = { ...form, guideId: '1' };
+    const updatedForm = {
+      ...form,
+      guideId: '1',
+      startDateTime: new Date(`${form.date} ${form.time}:00`),
+      maxPlaces: form.maxPlaces === '' ? null : parseInt(form.maxPlaces, 10),
+    };
     console.log(updatedForm);
     try {
       await API.post('/events', updatedForm);
@@ -88,7 +89,7 @@ export default function EventForm() {
               Choisissez le site concerné par cette animation :
               <br />
               <select {...register('siteId')}>
-                <option key={0} value={0}>
+                <option key="" value="">
                   Ajouter un nouveau site
                 </option>
                 {sitesList &&
