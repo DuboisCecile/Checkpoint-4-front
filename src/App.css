@@ -1,0 +1,7 @@
+.titles {
+  @apply text-3xl font-bold my-3;
+}
+
+.subtitles {
+  @apply text-xl font-bold  mt-10;
+}

@@ -9,6 +9,7 @@ import {
   faSmile,
   faGem,
   faShoppingBasket,
+  faPlusCircle,
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header() {
@@ -22,7 +23,7 @@ export default function Header() {
   return (
     <header className="w-full h-auto flex bg-primary">
       <div className="container px-4 justify-between items-start align-center flex flex-wrap">
-        <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start xl:justify-start 2xl:justify-start">
+        <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start ">
           <div className="flex items-center h-full">
             <NavLink exact path="/" to="/">
               Evadit
@@ -46,6 +47,7 @@ export default function Header() {
                 className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
                 exact
                 to="/sites"
+                path="/sites"
               >
                 {burger ? (
                   'Rechercher un site'
@@ -55,6 +57,20 @@ export default function Header() {
               </NavLink>
             </li>
 
+            {isLoggedIn && (
+              <li className="nav-item">
+                <NavLink
+                  to="/add-event"
+                  className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
+                >
+                  {burger ? (
+                    'Ajouter un évènement'
+                  ) : (
+                    <FontAwesomeIcon icon={faPlusCircle} />
+                  )}
+                </NavLink>
+              </li>
+            )}
             {isLoggedIn && (
               <li className="nav-item">
                 <NavLink
