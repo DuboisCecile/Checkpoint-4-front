@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --nav-size: 5rem;
+  --big-nav-size: 15rem;
+}

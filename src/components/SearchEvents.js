@@ -22,7 +22,7 @@ export default function SearchBar() {
   };
 
   useEffect(() => {
-    API.post('sites/search', { searchValue })
+    API.post('events/search', { searchValue })
       .then((res) => setResultList(res.data))
       .catch(console.error);
   }, [searchValue]);
@@ -84,9 +84,9 @@ export default function SearchBar() {
             <li key={result.id} className="bg-blue-400 text-white font-bold">
               <NavLink
                 className="flex flex-row w-full justify-between"
-                to={`/sites/${result.id}`}
+                to={`/events/${result.id}`}
               >
-                <span className="inline-block">{result.name}</span>
+                <span className="inline-block">{result.title}</span>
               </NavLink>
             </li>
           ))}
