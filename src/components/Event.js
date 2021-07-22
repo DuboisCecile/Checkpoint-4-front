@@ -24,7 +24,7 @@ export default function Event({
   startDateTime,
   title,
 }) {
-  const { profile } = useContext(CurrentUserContext);
+  const { profile, getProfile } = useContext(CurrentUserContext);
   const { addToast } = useToasts();
   const { register, handleSubmit, watch } = useForm();
   const [totalCost, setTotalCost] = useState(cost);
@@ -46,8 +46,6 @@ export default function Event({
   }, [profile]);
 
   const onSubmit = async (form) => {
-    console.log(totalCost);
-    console.log(profile);
     if (profile && totalCost > profile.gems) {
       history.push('/buy-gems');
     } else {
@@ -55,7 +53,9 @@ export default function Event({
         await API.post('events/register', {
           eventId: parseInt(id, 10),
           quantity: parseInt(form.quantity, 10),
+          totalCost: parseInt(totalCost, 10),
         });
+        getProfile();
         addToast('Votre participation a bien été enregistrée', {
           appearance: 'success',
         });
@@ -80,7 +80,7 @@ export default function Event({
           className="w-full"
           src={
             image
-              ? `${process.env.REACT_APP_API_FILE_STORAGE_URL}${image}`
+              ? `${process.env.REACT_APP_API_FILE_STORAGE_URL}/${image}`
               : `https://picsum.photos/200/100?random=${id}`
           }
           alt={image}
@@ -120,8 +120,8 @@ export default function Event({
               className="relative block w-20 px-3 py-2 border focus:outline-none focus:z-10 sm:text-sm"
               type="number"
               min="1"
+              max={availablePlaces || 200}
               defaultValue="1"
-              // onChange=((val)=> setQuantity)
               {...register('quantity')}
             />
             {`Coût : ${totalCost} gemmes`}

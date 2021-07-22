@@ -27,7 +27,6 @@ export default function DetailedSite() {
   // const { addToast } = useToasts();
 
   useEffect(() => {
-    console.log(id);
     API.get(`/sites/${parseInt(id, 10)}`)
       .then((res) => res.data)
       .then(setDetailedInfo)
@@ -60,7 +59,11 @@ export default function DetailedSite() {
             <div className="flex flex-row items-center w-full ">
               <img
                 className="w-full"
-                src={image || `https://picsum.photos/200/100?random=${id}`}
+                src={
+                  image
+                    ? `${process.env.REACT_APP_API_FILE_STORAGE_URL}/${image}`
+                    : `https://picsum.photos/200/100?random=${id}`
+                }
                 alt={image}
               />
             </div>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import ReactPlayer from 'react-player';
 import API from '../APIClient';
 
 export default function Profile() {
@@ -13,7 +14,6 @@ export default function Profile() {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(registeredEventsList);
   return (
     <div>
       <h1 className="titles">Les vidéos que j'ai achetées</h1>
@@ -33,6 +33,16 @@ export default function Profile() {
               <div className="text-grey-darker text-sm mt-4 font-bold">
                 {`par ${registered.Event.Guide.pseudo}`}
               </div>
+              <ReactPlayer
+                url={`${process.env.REACT_APP_API_FILE_STORAGE_URL}/${registered.Event.videoLink}`}
+                controls
+                // light="true"
+                // playing
+                loop
+                width="100%"
+                height="100%"
+                // onClickPreview={handleOpenVideo}
+              />
             </li>
           ))}
         </ul>
@@ -40,17 +50,3 @@ export default function Profile() {
     </div>
   );
 }
-
-/* const fullVideoUrl = `${process.env.REACT_APP_API_FILE_STORAGE_URL}${videoUrl}`;
-import ReactPlayer from 'react-player';
- 
-<ReactPlayer
-          url={fullVideoUrl}
-          controls
-          light={fullVideoUrl.preview}
-          playing
-          loop
-          width="100%"
-          height="100%"
-        />
-*/

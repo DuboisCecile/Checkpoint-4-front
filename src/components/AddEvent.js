@@ -34,7 +34,7 @@ export default function EventForm() {
         startDateTime: new Date(`${form.date} ${form.time}:00`),
         maxPlaces: form.maxPlaces === '' ? null : parseInt(form.maxPlaces, 10),
       };
-      console.log(updatedForm);
+
       try {
         await API.post('/events', updatedForm);
         addToast('Votre animation a bien été enregistrée', {

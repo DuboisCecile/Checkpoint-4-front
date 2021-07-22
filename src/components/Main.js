@@ -19,7 +19,7 @@ export default function Main() {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/sites" component={SiteSearchPage} />
         <Route exact path="/sites/:id" component={DetailedSite} />
-        <Route path="/events" component={EventSearchPage} />
+        <Route exact path="/events" component={EventSearchPage} />
         <Route exact path="/events/:id" component={DetailedEvent} />
         <Route path="/add-event" component={AddEventPage} />
         <Route path="/add-site" component={AddSitePage} />

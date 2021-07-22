@@ -18,7 +18,7 @@ export default function Site({
           className="w-full"
           src={
             image
-              ? `${process.env.REACT_APP_API_FILE_STORAGE_URL}${image}`
+              ? `${process.env.REACT_APP_API_FILE_STORAGE_URL}/${image}`
               : `https://picsum.photos/200/100?random=${id}`
           }
           alt={image}

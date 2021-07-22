@@ -2,7 +2,7 @@ import ReactPlayer from 'react-player';
 
 export default function HomePage() {
   const videoUrl = 'Castle-29224.mp4';
-  const fullVideoUrl = `${process.env.REACT_APP_API_FILE_STORAGE_URL}${videoUrl}`;
+  const fullVideoUrl = `${process.env.REACT_APP_API_FILE_STORAGE_URL}/${videoUrl}`;
 
   return (
     <div>
@@ -13,7 +13,7 @@ export default function HomePage() {
         <ReactPlayer
           url={fullVideoUrl}
           controls
-          light={fullVideoUrl.preview}
+          // light={fullVideoUrl.preview}
           playing
           loop
           width="100%"
