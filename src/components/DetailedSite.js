@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import './DetailedSite.css';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';

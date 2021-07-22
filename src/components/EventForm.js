@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/jsx-props-no-spreading */
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';

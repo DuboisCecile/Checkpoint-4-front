@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useEffect, useState } from 'react';
 import './SearchBar.css';
 import { NavLink } from 'react-router-dom';
