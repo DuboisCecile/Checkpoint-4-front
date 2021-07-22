@@ -6,8 +6,8 @@ export default function HomePage() {
 
   return (
     <div>
-      <div className="relative w-full bg-gray-200 rounded-xl">
-        <h1 className="absolute text-white text-9xl text-center top-24">
+      <div className="relative m-auto w-full md:w-4/5 bg-gray-200 rounded-xl">
+        <h1 className="absolute text-white text-2xl md:text-8xl text-center transform  left-1/2 -translate-x-1/2 bottom-1/2 translate-y-1/2 ">
           Visitez des sites virtuellement !
         </h1>
         <ReactPlayer
