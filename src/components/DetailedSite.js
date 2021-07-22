@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import './DetailedSite.css';
+import './DetailedInfo.css';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 // import dayjs from 'dayjs';
