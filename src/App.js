@@ -2,7 +2,7 @@ import { ToastProvider } from 'react-toast-notifications';
 import './App.css';
 import Main from './components/Main';
 import Header from './components/Header';
-import SiteContextProvider from './contexts/SiteContext';
+import CurrentUserContextProvider from './contexts/CurrentUserContext';
 
 function App() {
   return (
@@ -12,10 +12,10 @@ function App() {
         autoDismissTimeout={3000}
         placement="top-right"
       >
-        <SiteContextProvider>
+        <CurrentUserContextProvider>
           <Header />
           <Main />
-        </SiteContextProvider>
+        </CurrentUserContextProvider>
       </ToastProvider>
     </div>
   );

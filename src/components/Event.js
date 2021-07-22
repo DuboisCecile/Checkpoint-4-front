@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-console */
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import dayjs from 'dayjs';
 import { useToasts } from 'react-toast-notifications';
@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import API from '../APIClient';
 import history from '../history';
 
-// import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 export default function Event({
   id,
@@ -24,39 +24,52 @@ export default function Event({
   startDateTime,
   title,
 }) {
-  // const { profile } = useContext(CurrentUserContext);
+  const { profile } = useContext(CurrentUserContext);
   const { addToast } = useToasts();
   const { register, handleSubmit, watch } = useForm();
   const [totalCost, setTotalCost] = useState(cost);
+  const [alreadyRegistered, setAlreadyRegistered] = useState(false);
 
   const quantity = watch('quantity');
-  console.log(quantity);
 
   useEffect(() => {
     setTotalCost(quantity * cost);
   }, [quantity]);
 
-  const onSubmit = async (form) => {
-    const profile = { id: 1 };
-    try {
-      await API.post('events/register', {
-        attendeeId: parseInt(profile.id, 10),
-        eventId: parseInt(id, 10),
-        quantity: parseInt(form.quantity, 10),
-      });
-      addToast('Votre participation a bien été enregistrée', {
-        appearance: 'success',
-      });
-      setTimeout(() => {
-        history.push('/');
-      }, 500);
-    } catch (err) {
-      addToast(
-        "Il y a eu une erreur pendant l'enregistrement de votre participation",
-        {
-          appearance: 'error',
-        }
+  useEffect(() => {
+    if (profile && profile.Registrations) {
+      const regTest = !(
+        profile.Registrations.filter((reg) => reg.eventId === id).length === 0
       );
+      setAlreadyRegistered(regTest);
+    }
+  }, [profile]);
+
+  const onSubmit = async (form) => {
+    console.log(totalCost);
+    console.log(profile);
+    if (profile && totalCost > profile.gems) {
+      history.push('/buy-gems');
+    } else {
+      try {
+        await API.post('events/register', {
+          eventId: parseInt(id, 10),
+          quantity: parseInt(form.quantity, 10),
+        });
+        addToast('Votre participation a bien été enregistrée', {
+          appearance: 'success',
+        });
+        setTimeout(() => {
+          history.push('/');
+        }, 500);
+      } catch (err) {
+        addToast(
+          "Il y a eu une erreur pendant l'enregistrement de votre participation",
+          {
+            appearance: 'error',
+          }
+        );
+      }
     }
   };
 
@@ -65,7 +78,11 @@ export default function Event({
       <NavLink to={`/events/${id}`}>
         <img
           className="w-full"
-          src={image || `https://picsum.photos/200/100?random=${id}`}
+          src={
+            image
+              ? `${process.env.REACT_APP_API_FILE_STORAGE_URL}${image}`
+              : `https://picsum.photos/200/100?random=${id}`
+          }
           alt={image}
         />
         <div className="px-6 py-4">
@@ -112,7 +129,7 @@ export default function Event({
         </div>
 
         <div className="flex items-center justify-center leading-none p-2 md:p-4">
-          <button type="submit" className="btn btn-green">
+          <button type="submit" disabled={alreadyRegistered}>
             Acheter
           </button>
         </div>

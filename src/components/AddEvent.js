@@ -27,26 +27,30 @@ export default function EventForm() {
   const onSubmit = async (form) => {
     if (form && form.siteId === '') {
       history.push('/add-site');
-    }
-    const updatedForm = {
-      ...form,
-      guideId: '1',
-      startDateTime: new Date(`${form.date} ${form.time}:00`),
-      maxPlaces: form.maxPlaces === '' ? null : parseInt(form.maxPlaces, 10),
-    };
-    console.log(updatedForm);
-    try {
-      await API.post('/events', updatedForm);
-      addToast('Votre animation a bien été enregistrée', {
-        appearance: 'success',
-      });
-      setTimeout(() => {
-        history.push('/');
-      }, 500);
-    } catch (err) {
-      addToast('Il y a eu une erreur pendant la création de votre animation', {
-        appearance: 'error',
-      });
+    } else {
+      const updatedForm = {
+        ...form,
+        guideId: '1',
+        startDateTime: new Date(`${form.date} ${form.time}:00`),
+        maxPlaces: form.maxPlaces === '' ? null : parseInt(form.maxPlaces, 10),
+      };
+      console.log(updatedForm);
+      try {
+        await API.post('/events', updatedForm);
+        addToast('Votre animation a bien été enregistrée', {
+          appearance: 'success',
+        });
+        setTimeout(() => {
+          history.push('/');
+        }, 500);
+      } catch (err) {
+        addToast(
+          'Il y a eu une erreur pendant la création de votre animation',
+          {
+            appearance: 'error',
+          }
+        );
+      }
     }
   };
 
@@ -96,7 +100,7 @@ export default function EventForm() {
                 {sitesList &&
                   sitesList.map((site) => (
                     <option key={site.id} value={site.id}>
-                      {`${site.name} ${site.address}`}
+                      {`${site.name} - ${site.address}, ${site.postcode} ${site.city} - ${site.country}`}
                     </option>
                   ))}
               </select>

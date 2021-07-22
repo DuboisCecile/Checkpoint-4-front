@@ -1,10 +1,10 @@
-import SearchBar from '../components/SearchBar';
+import SearchSites from '../components/SearchSites';
 import Events from '../components/Events';
 
 export default function SiteSearchPage() {
   return (
     <div>
-      <SearchBar />
+      <SearchSites />
       <Events />
     </div>
   );

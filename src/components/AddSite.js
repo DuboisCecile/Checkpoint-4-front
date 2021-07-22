@@ -26,8 +26,6 @@ export default function EventForm() {
   }, []);
 
   const onSubmitSite = async (form) => {
-    console.log(form);
-
     try {
       await API.post('/sites', form);
       addToast('Ce nouveau site a bien été enregistré', {
@@ -75,7 +73,7 @@ export default function EventForm() {
                 type="textarea"
                 required
                 className="relative block w-full px-3 py-2 border focus:outline-none focus:z-10 sm:text-sm"
-                placeholder="Décrivez cette animation"
+                placeholder="Décrivez ce site"
                 {...register('description')}
               />{' '}
             </label>

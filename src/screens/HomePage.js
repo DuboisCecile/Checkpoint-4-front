@@ -2,7 +2,7 @@ import ReactPlayer from 'react-player';
 
 export default function HomePage() {
   const videoUrl = 'Castle-29224.mp4';
-  const fullVideoUrl = `${process.env.REACT_APP_API_BASE_URL}/file-storage/${videoUrl}`;
+  const fullVideoUrl = `${process.env.REACT_APP_API_FILE_STORAGE_URL}${videoUrl}`;
 
   return (
     <div>

@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTimes,
   faBars,
-  // faUserCircle,
+  faUserCircle,
   faChessRook,
   faSmile,
   faGem,
-  faShoppingBasket,
+  // faShoppingBasket,
   faPlusCircle,
   faEye,
 } from '@fortawesome/free-solid-svg-icons';
 
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
+
 export default function Header() {
   // const { isLoggedIn = true, profile } = useContext(CurrentUserContext);
+  const { profile } = useContext(CurrentUserContext);
   const isLoggedIn = true;
   const [burger, setBurger] = useState(false);
   const handleBurgerToggle = () => {
@@ -43,6 +46,11 @@ export default function Header() {
           }`}
         >
           <ul className="w-full flex flex-col lg:flex-row list-none lg:ml-auto lg:justify-end mt-7">
+            {profile && (
+              <li className="nav-item">
+                <div className="px-3 py-2 flex items-center text-xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75">{`Mon trésor actuel : ${profile.gems} gemmes`}</div>
+              </li>
+            )}
             <li className="nav-item">
               <NavLink
                 className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
@@ -107,14 +115,18 @@ export default function Header() {
                 <NavLink
                   className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
                   exact
-                  to="/gems"
+                  to="/buy-gems"
                 >
-                  {burger ? 'Mes gemmes' : <FontAwesomeIcon icon={faGem} />}
+                  {burger ? (
+                    'Acheter des gemmes'
+                  ) : (
+                    <FontAwesomeIcon icon={faGem} />
+                  )}
                 </NavLink>
               </li>
             )}
 
-            {isLoggedIn && (
+            {/* {isLoggedIn && (
               <li className="nav-item">
                 <NavLink
                   className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
@@ -128,25 +140,20 @@ export default function Header() {
                   )}
                 </NavLink>
               </li>
-            )}
-
-            {/* {isLoggedIn && (
-              <>
-                <li>
-                  <NavLink
-                    className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
-                    exact
-                    to="/profile"
-                  >
-                    {burger ? (
-                      'Profil'
-                    ) : (
-                      <FontAwesomeIcon icon={faUserCircle} />
-                    )}
-                  </NavLink>
-                </li>
-              </>
             )} */}
+
+            {/* {isLoggedIn && ( */}
+            <li>
+              <NavLink
+                className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
+                exact
+                to="/profile"
+              >
+                {burger ? 'Profil' : <FontAwesomeIcon icon={faUserCircle} />}
+              </NavLink>
+            </li>
+            {/* )} */}
+
             {/* {!isLoggedIn && (
               <>
                 <li>

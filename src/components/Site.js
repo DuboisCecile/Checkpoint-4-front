@@ -16,7 +16,11 @@ export default function Site({
       <div className="max-w-sm rounded overflow-hidden shadow-lg m-8">
         <img
           className="w-full"
-          src={image || `https://picsum.photos/200/100?random=${id}`}
+          src={
+            image
+              ? `${process.env.REACT_APP_API_FILE_STORAGE_URL}${image}`
+              : `https://picsum.photos/200/100?random=${id}`
+          }
           alt={image}
         />
         <div className="px-6 py-4">

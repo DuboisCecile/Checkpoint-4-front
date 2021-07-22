@@ -5,6 +5,7 @@ import Site from './Site';
 
 export default function Sites() {
   const [sitesList, setSitesList] = useState([]);
+
   useEffect(() => {
     API.get('sites')
       .then(async (res) => {

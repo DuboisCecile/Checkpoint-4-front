@@ -9,7 +9,6 @@ export default function Events() {
   useEffect(() => {
     API.get('events')
       .then(async (res) => {
-        console.log(res.data);
         setEventsList(res.data);
       })
       .catch((err) => console.log(err));

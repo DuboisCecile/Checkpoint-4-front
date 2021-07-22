@@ -21,22 +21,22 @@
 }
 
 .suggestions li:nth-child(even) {
-  transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
+  /* transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001); */
   background: linear-gradient(to bottom, #ffffff 0%, #efefef 100%);
 }
 
 .suggestions li:nth-child(odd) {
-  transform: perspective(100px) rotateX(-3deg) translateY(3px);
+  /* transform: perspective(100px) rotateX(-3deg) translateY(3px); */
   background: linear-gradient(to top, #ffffff 0%, #efefef 100%);
 }
 
-.suggestions li:nth-child(even):hover {
+/* .suggestions li:nth-child(even):hover {
   background: linear-gradient(
     to bottom,
     var(--fiverr-light-green) 0%,
     var(--fiverr-green) 100%
-  );
-}
+  ); 
+}*/
 
 .suggestions li:nth-child(odd):hover {
   background: linear-gradient(
