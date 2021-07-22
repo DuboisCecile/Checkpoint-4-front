@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import API from '../APIClient';
