@@ -15,8 +15,8 @@ export default function Sites() {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center">
-      <ul className="flex w-full overflow-x-scroll">
+    <div>
+      <ul className="flex flex-col lg:flex-row lg:justify-start lg:overflow-x-scroll">
         {sitesList.length &&
           sitesList.map(
             ({
@@ -30,7 +30,7 @@ export default function Sites() {
               country,
               Category,
             }) => (
-              <li className="min-w-max" key={id}>
+              <li className="max-w-full" key={id}>
                 <Site
                   name={name}
                   image={image}

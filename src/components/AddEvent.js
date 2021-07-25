@@ -55,7 +55,7 @@ export default function EventForm() {
   };
 
   return (
-    <div className="flex items-center justify-center w-2/3 m-auto border shadow-2xl">
+    <div className="flex items-center justify-center lg:w-2/3 lg:mt-4 m-auto border shadow-2xl">
       <div className="p-4 w-full">
         <h1 className="titles">Ajoutez une nouvelle animation</h1>
         <form
@@ -185,9 +185,9 @@ export default function EventForm() {
           <div>
             <button
               type="submit"
-              className="mt-5 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-400"
+              className="font-bold text-xl mt-5 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-400"
             >
-              Create
+              Ajouter
             </button>
           </div>
         </form>

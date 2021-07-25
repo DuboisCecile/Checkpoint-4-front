@@ -7,13 +7,12 @@ export default function HomePage() {
   return (
     <div>
       <div className="relative m-auto w-full md:w-4/5 bg-gray-200 rounded-xl">
-        <h1 className="absolute text-white text-2xl md:text-8xl text-center transform  left-1/2 -translate-x-1/2 bottom-1/2 translate-y-1/2 ">
+        <h1 className="font-primary absolute text-white text-2xl md:text-8xl text-center transform  left-1/2 -translate-x-1/2 bottom-1/2 translate-y-1/2 ">
           Visitez des sites virtuellement !
         </h1>
         <ReactPlayer
           url={fullVideoUrl}
           controls
-          // light={fullVideoUrl.preview}
           playing
           loop
           width="100%"

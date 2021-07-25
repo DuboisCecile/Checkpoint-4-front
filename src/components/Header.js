@@ -6,7 +6,7 @@ import {
   faBars,
   faUserCircle,
   faChessRook,
-  faSmile,
+  // faSmile,
   faGem,
   // faShoppingBasket,
   faPlusCircle,
@@ -26,26 +26,26 @@ export default function Header() {
 
   return (
     <header className="w-full h-auto flex bg-blue-400">
-      <div className="container px-4 justify-between items-start align-center flex flex-wrap">
-        <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start ">
-          <div className="flex items-center h-full">
-            <NavLink exact path="/" to="/">
-              Evadit
-            </NavLink>
-          </div>
+      <div className="w-full px-4 justify-between items-center align-center flex flex-wrap">
+        <div className="mt-4 w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start ">
+          <NavLink
+            className="font-primary text-white font-bold text-6xl mb-0"
+            exact
+            path="/"
+            to="/"
+          >
+            Evadit
+          </NavLink>
+
           <button type="button" onClick={handleBurgerToggle}>
             <FontAwesomeIcon
-              className="lg:hidden flex"
+              className="text-2xl lg:hidden flex text-white"
               icon={burger ? faTimes : faBars}
             />
           </button>
         </div>
-        <div
-          className={`lg:flex flex-grow items-center${
-            burger ? ' flex' : ' hidden'
-          }`}
-        >
-          <ul className="w-full flex flex-col lg:flex-row list-none lg:ml-auto lg:justify-end mt-7">
+        <div className={`lg:flex items-center${burger ? ' flex' : ' hidden'}`}>
+          <ul className="w-full flex flex-col lg:flex-row list-none lg:ml-auto lg:justify-center mt-7">
             {profile && (
               <li className="nav-item">
                 <div className="px-3 py-2 flex items-center text-xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75">{`Mon trésor actuel : ${profile.gems} gemmes`}</div>
@@ -53,7 +53,7 @@ export default function Header() {
             )}
             <li className="nav-item">
               <NavLink
-                className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
+                className="px-3 py-2 flex items-center text-xl lg:text-3xl uppercase font-bold leading-snug text-white hover:opacity-75"
                 exact
                 to="/sites"
                 path="/sites"
@@ -68,7 +68,7 @@ export default function Header() {
 
             <li className="nav-item">
               <NavLink
-                className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
+                className="px-3 py-2 flex items-center text-xl lg:text-3xl uppercase font-bold leading-snug text-white hover:opacity-75"
                 exact
                 to="/events"
                 path="/events"
@@ -85,7 +85,7 @@ export default function Header() {
               <li className="nav-item">
                 <NavLink
                   to="/add-event"
-                  className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
+                  className="px-3 py-2 flex items-center text-xl lg:text-3xl  uppercase font-bold leading-snug text-white hover:opacity-75"
                 >
                   {burger ? (
                     'Ajouter un évènement'
@@ -95,11 +95,11 @@ export default function Header() {
                 </NavLink>
               </li>
             )}
-            {isLoggedIn && (
+            {/* {isLoggedIn && (
               <li className="nav-item">
                 <NavLink
                   to="/guides"
-                  className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
+                  className="px-3 py-2 flex items-center text-xl lg:text-3xl uppercase font-bold leading-snug text-white hover:opacity-75"
                 >
                   {burger ? (
                     'Rechercher un animateur'
@@ -108,12 +108,12 @@ export default function Header() {
                   )}
                 </NavLink>
               </li>
-            )}
+            )} */}
 
             {isLoggedIn && (
               <li className="nav-item">
                 <NavLink
-                  className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
+                  className="px-3 py-2 flex items-center text-xl lg:text-3xl uppercase font-bold leading-snug text-white hover:opacity-75"
                   exact
                   to="/buy-gems"
                 >
@@ -129,7 +129,7 @@ export default function Header() {
             {/* {isLoggedIn && (
               <li className="nav-item">
                 <NavLink
-                  className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
+                  className="px-3 py-2 flex items-center text-xl lg:text-3xl uppercase font-bold leading-snug text-white hover:opacity-75"
                   exact
                   to="/basket"
                 >
@@ -145,7 +145,7 @@ export default function Header() {
             {/* {isLoggedIn && ( */}
             <li>
               <NavLink
-                className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
+                className="px-3 py-2 flex items-center text-xl lg:text-3xl uppercase font-bold leading-snug text-white hover:opacity-75"
                 exact
                 to="/profile"
               >
@@ -160,7 +160,7 @@ export default function Header() {
                   <NavLink
                     exact
                     to="/sign-up"
-                    className="px-3 py-2 flex items-center text-3xl lg:text-md uppercase font-bold leading-snug text-white hover:opacity-75"
+                    className="px-3 py-2 flex items-center text-xl lg:text-3xl uppercase font-bold leading-snug text-white hover:opacity-75"
                   >
                     S'inscrire
                   </NavLink>

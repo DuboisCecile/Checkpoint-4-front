@@ -33,8 +33,9 @@ export default function Event({
   const quantity = watch('quantity');
 
   useEffect(() => {
-    setTotalCost(quantity * cost);
-  }, [quantity]);
+    if (quantity && cost) setTotalCost(quantity * cost);
+    else setTotalCost(cost);
+  }, [quantity, cost]);
 
   useEffect(() => {
     if (profile && profile.Registrations) {
@@ -87,6 +88,9 @@ export default function Event({
         />
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{title}</div>
+          <div className="text-grey-darker font-bold text-lg mt-4">
+            depuis : {Site.name}
+          </div>
           <p className="text-grey-darker text-sm p-2 md:p-4">
             {dayjs(startDateTime).format('DD/MM/YYYY HH:mm')} -{' '}
             {parseInt(duration / 60, 10)}h
@@ -96,7 +100,7 @@ export default function Event({
             {Guide.pseudo}
           </div>
           <div className="text-grey-darker text-sm mt-4">{description} </div>
-          <div className="text-grey-darker text-sm mt-4">{Site.name} </div>
+
           <div className="text-grey-darker text-sm mt-4">
             {`${cost} gemmes`}
           </div>
@@ -128,8 +132,12 @@ export default function Event({
           </label>
         </div>
 
-        <div className="flex items-center justify-center leading-none p-2 md:p-4">
-          <button type="submit" disabled={alreadyRegistered}>
+        <div className="rounded bg-blue-400 text-white flex items-center justify-center mt-4 p-2">
+          <button
+            className="font-bold text-xl"
+            type="submit"
+            disabled={alreadyRegistered}
+          >
             Acheter
           </button>
         </div>

@@ -45,7 +45,7 @@ export default function EventForm() {
   };
 
   return (
-    <div className="flex items-center justify-center w-2/3 m-auto border shadow-2xl">
+    <div className="flex items-center justify-center lg:w-2/3 lg:mt-4 m-auto border shadow-2xl">
       <div className="p-4 w-full">
         <h1 className="titles">Ajoutez un nouveau site</h1>
         <form

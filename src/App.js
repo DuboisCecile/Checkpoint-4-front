@@ -6,7 +6,7 @@ import CurrentUserContextProvider from './contexts/CurrentUserContext';
 
 function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-100">
       <ToastProvider
         autoDismiss
         autoDismissTimeout={3000}

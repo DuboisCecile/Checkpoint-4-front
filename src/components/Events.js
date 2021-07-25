@@ -15,8 +15,8 @@ export default function Events() {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center">
-      <ul className="flex w-full overflow-x-scroll">
+    <div>
+      <ul className="flex flex-col lg:flex-row lg:justify-start lg:overflow-x-scroll">
         {eventsList.length &&
           eventsList.map(
             ({
@@ -33,7 +33,7 @@ export default function Events() {
               startDateTime,
               title,
             }) => (
-              <li className="min-w-max" key={id}>
+              <li className="max-w-full" key={id}>
                 <Event
                   id={id}
                   availablePlaces={availablePlaces}
